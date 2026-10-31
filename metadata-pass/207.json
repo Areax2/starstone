@@ -1,0 +1,19 @@
+{
+  "name": "StarStone Pass #207",
+  "description": "Access key for StarStone mining on BNB Chain. One pass per wallet, bound to its holder.",
+  "image": "https://areax2.github.io/starstone/metadata-pass/images/207.png",
+  "attributes": [
+    {
+      "trait_type": "Type",
+      "value": "Access Pass"
+    },
+    {
+      "trait_type": "Pass Number",
+      "value": 207
+    },
+    {
+      "trait_type": "Holder",
+      "value": "0xfC500E1F04E5be0b560121117F453570FBC7F327"
+    }
+  ]
+}
