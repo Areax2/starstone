@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StarStone — Owner Tools</title>
+<style>
+  body{background:#05050f;color:#eef0ff;font-family:system-ui,'Segoe UI',sans-serif;margin:0;padding:24px 16px 48px}
+  .wrap{max-width:640px;margin:0 auto}
+  h1{font-size:20px;letter-spacing:2px;color:#ffd964;margin:8px 0 4px}
+  .sub{color:#9a9cc9;font-size:13px;margin-bottom:20px}
+  .card{background:#0d0d26;border:1px solid #2a2340;border-radius:14px;padding:18px;margin-bottom:16px}
+  .card h2{font-size:15px;margin:0 0 6px}
+  .addr{font-family:ui-monospace,monospace;font-size:11.5px;color:#9a9cc9;word-break:break-all}
+  .val{font-family:ui-monospace,monospace;font-size:12px;background:#12122a;border:1px solid #2a2340;border-radius:8px;padding:8px 10px;word-break:break-all;margin:10px 0}
+  button{background:#ffd964;color:#0a0a18;border:0;border-radius:10px;padding:12px 18px;font-weight:800;font-size:14px;width:100%;cursor:pointer}
+  button:disabled{opacity:.45;cursor:not-allowed}
+  .status{font-size:13px;margin-top:10px;min-height:18px;color:#c9cdf5;word-break:break-all}
+  .ok{color:#7dff9a}.err{color:#ff8f8f}.warn{color:#ffd964}
+  a{color:#ffd964}
+  #walletBox{font-size:13px;margin-bottom:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>STARSTONE — OWNER TOOLS</h1>
+  <div class="sub">One-time setup: attach the metadata hosting address (baseURI) to both contracts. Only the owner wallet can do this. Open this page inside your wallet app's browser (the wallet that holds the owner address).</div>
+
+  <div class="card">
+    <div id="walletBox">Wallet: not connected</div>
+    <button id="btnConnect">Connect wallet</button>
+    <div class="status" id="connectStatus"></div>
+  </div>
+
+  <div class="card">
+    <h2>1 — StarStone (stones)</h2>
+    <div class="addr">Contract: 0x954261a71F733a25B20c299bfb17317d158d56f9</div>
+    <div class="val">setBaseURI → https://areax2.github.io/starstone/metadata/</div>
+    <button id="btnStone" disabled>Set baseURI — StarStone</button>
+    <div class="status" id="stoneStatus"></div>
+    <div class="status" id="stoneUri"></div>
+  </div>
+
+  <div class="card">
+    <h2>2 — StarStonePass (passes)</h2>
+    <div class="addr">Contract: 0x7b9d701f13372e816E5CEA49776b564bF7549517</div>
+    <div class="val">setBaseURI → https://areax2.github.io/starstone/metadata-pass/</div>
+    <button id="btnPass" disabled>Set baseURI — StarStonePass</button>
+    <div class="status" id="passStatus"></div>
+    <div class="status" id="passUri"></div>
+  </div>
+
+  <div class="sub">Gas per call is tiny (about 0.000002 BNB). After both calls succeed, tell Muse — the result will be verified on-chain.</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.13.4/dist/ethers.min.js"></script>
+<script>
+const OWNER = "0xDCfAb52E95fF1f6162Ccef4921465a1e03f8A4b3";
+const STONE = "0x954261a71F733a25B20c299bfb17317d158d56f9";
+const PASS  = "0x7b9d701f13372e816E5CEA49776b564bF7549517";
+const STONE_URI = "https://areax2.github.io/starstone/metadata/";
+const PASS_URI  = "https://areax2.github.io/starstone/metadata-pass/";
+const ABI = ["function setBaseURI(string uri)", "function tokenURI(uint256 id) view returns (string)"];
+const RPC = "https://bsc-dataseed.binance.org";
+
+let signer = null;
+const $ = (id) => document.getElementById(id);
+
+async function showUris() {
+  try {
+    const read = new ethers.JsonRpcProvider(RPC);
+    const s = new ethers.Contract(STONE, ABI, read);
+    const p = new ethers.Contract(PASS, ABI, read);
+    const su = await s.tokenURI(1).catch(() => "");
+    const pu = await p.tokenURI(1).catch(() => "");
+    $("stoneUri").innerHTML = su ? "Current tokenURI(1): " + su : "Current tokenURI(1): (empty — not set yet)";
+    $("passUri").innerHTML = pu ? "Current tokenURI(1): " + pu : "Current tokenURI(1): (empty — not set yet)";
+  } catch (e) { /* read-only display only */ }
+}
+
+$("btnConnect").onclick = async () => {
+  const st = $("connectStatus");
+  try {
+    if (!window.ethereum) {
+      st.innerHTML = '<span class="err">No wallet found in this browser. Open this page inside your wallet app browser (e.g. Bitget Wallet → Browser/DApps).</span>';
+      return;
+    }
+    const provider = new ethers.BrowserProvider(window.ethereum);
+    const net = await provider.getNetwork();
+    if (net.chainId !== 56n) {
+      st.innerHTML = '<span class="warn">Wrong network — switching to BNB Chain…</span>';
+      await window.ethereum.request({ method: "wallet_switchEthereumChain", params: [{ chainId: "0x38" }] });
+    }
+    signer = await provider.getSigner();
+    const addr = await signer.getAddress();
+    $("walletBox").textContent = "Wallet: " + addr;
+    if (addr.toLowerCase() !== OWNER.toLowerCase()) {
+      st.innerHTML = '<span class="err">This is not the owner wallet (' + OWNER + '). Switch to the owner wallet in your app, then reconnect.</span>';
+      signer = null;
+      return;
+    }
+    st.innerHTML = '<span class="ok">Owner wallet connected. You can press both buttons below.</span>';
+    $("btnStone").disabled = false;
+    $("btnPass").disabled = false;
+  } catch (e) {
+    st.innerHTML = '<span class="err">Connect failed: ' + (e.shortMessage || e.message) + "</span>";
+  }
+};
+
+async function doSet(contractAddr, uri, btn, statusEl) {
+  const st = $(statusEl);
+  try {
+    btn.disabled = true;
+    st.textContent = "Sending — please approve in your wallet…";
+    const c = new ethers.Contract(contractAddr, ABI, signer);
+    const tx = await c.setBaseURI(uri);
+    st.innerHTML = 'Broadcast: <a href="https://bscscan.com/tx/' + tx.hash + '" target="_blank" rel="noopener">' + tx.hash + "</a> — waiting for confirmation…";
+    await tx.wait();
+    st.innerHTML = '<span class="ok">Done and confirmed on-chain.</span>';
+    showUris();
+  } catch (e) {
+    st.innerHTML = '<span class="err">Failed: ' + (e.shortMessage || e.message) + "</span>";
+    btn.disabled = false;
+  }
+}
+
+$("btnStone").onclick = () => doSet(STONE, STONE_URI, $("btnStone"), "stoneStatus");
+$("btnPass").onclick = () => doSet(PASS, PASS_URI, $("btnPass"), "passStatus");
+showUris();
+</script>
+</body>
+</html>
