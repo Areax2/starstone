@@ -66,8 +66,20 @@ const RPC = "https://bsc-dataseed.binance.org";
 let signer = null;
 const $ = (id) => document.getElementById(id);
 
+function detectProvider() {
+  const cands = [];
+  if (window.ethereum) cands.push(window.ethereum);
+  if (window.bitkeep && window.bitkeep.ethereum) cands.push(window.bitkeep.ethereum);
+  if (window.bitget && window.bitget.ethereum) cands.push(window.bitget.ethereum);
+  if (window.bitgetWallet) cands.push(window.bitgetWallet);
+  // EIP-6963 style multi-provider arrays
+  if (window.ethereum && Array.isArray(window.ethereum.providers)) cands.push(...window.ethereum.providers);
+  return cands[0] || null;
+}
+
 async function showUris() {
   try {
+    if (typeof ethers === "undefined") return;
     const read = new ethers.JsonRpcProvider(RPC);
     const s = new ethers.Contract(STONE, ABI, read);
     const p = new ethers.Contract(PASS, ABI, read);
@@ -81,16 +93,24 @@ async function showUris() {
 $("btnConnect").onclick = async () => {
   const st = $("connectStatus");
   try {
-    if (!window.ethereum) {
-      st.innerHTML = '<span class="err">No wallet found in this browser. Open this page inside your wallet app browser (e.g. Bitget Wallet → Browser/DApps).</span>';
+    if (typeof ethers === "undefined") {
+      st.innerHTML = '<span class="err">The signing library failed to load. Check your connection, then reload this page.</span>';
       return;
     }
-    const provider = new ethers.BrowserProvider(window.ethereum);
-    const net = await provider.getNetwork();
-    if (net.chainId !== 56n) {
-      st.innerHTML = '<span class="warn">Wrong network — switching to BNB Chain…</span>';
-      await window.ethereum.request({ method: "wallet_switchEthereumChain", params: [{ chainId: "0x38" }] });
+    const raw = detectProvider();
+    if (!raw) {
+      st.innerHTML = '<span class="err">No wallet found in this browser. Open this page inside your wallet app browser (Bitget Wallet → Browser/DApps), not in Chrome or another regular browser.</span>';
+      return;
     }
+    st.textContent = "Requesting account access — approve in your wallet if asked…";
+    const accounts = await raw.request({ method: "eth_requestAccounts" });
+    if (!accounts || !accounts.length) throw new Error("No account returned by the wallet.");
+    const chainId = await raw.request({ method: "eth_chainId" });
+    if (chainId !== "0x38") {
+      st.innerHTML = '<span class="warn">Wrong network — switching to BNB Chain…</span>';
+      await raw.request({ method: "wallet_switchEthereumChain", params: [{ chainId: "0x38" }] });
+    }
+    const provider = new ethers.BrowserProvider(raw);
     signer = await provider.getSigner();
     const addr = await signer.getAddress();
     $("walletBox").textContent = "Wallet: " + addr;
@@ -103,7 +123,7 @@ $("btnConnect").onclick = async () => {
     $("btnStone").disabled = false;
     $("btnPass").disabled = false;
   } catch (e) {
-    st.innerHTML = '<span class="err">Connect failed: ' + (e.shortMessage || e.message) + "</span>";
+    st.innerHTML = '<span class="err">Connect failed: ' + (e.shortMessage || e.message || String(e)) + "</span>";
   }
 };
 
@@ -119,7 +139,7 @@ async function doSet(contractAddr, uri, btn, statusEl) {
     st.innerHTML = '<span class="ok">Done and confirmed on-chain.</span>';
     showUris();
   } catch (e) {
-    st.innerHTML = '<span class="err">Failed: ' + (e.shortMessage || e.message) + "</span>";
+    st.innerHTML = '<span class="err">Failed: ' + (e.shortMessage || e.message || String(e)) + "</span>";
     btn.disabled = false;
   }
 }
