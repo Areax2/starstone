@@ -1,0 +1,131 @@
+{
+  "updatedAt": "2026-11-01T02:47:04.974Z",
+  "stoneSupply": 8,
+  "passSupply": 444,
+  "totalMines": 8,
+  "maxId": 8,
+  "bestBits": 26,
+  "freeCount": 5,
+  "paidCount": 3,
+  "tierCounts": [
+    4,
+    3,
+    0,
+    1,
+    0
+  ],
+  "miners": [
+    {
+      "miner": "0x9FDef1Ac5a89B9B63af9afA9D22D3E6a471a5aCf",
+      "count": 4,
+      "best": 23,
+      "tier": 1
+    },
+    {
+      "miner": "0x2f93E76A79C84aa3f210B17F6feE2C73ab94032b",
+      "count": 1,
+      "best": 26,
+      "tier": 3
+    },
+    {
+      "miner": "0x0aAc0502A07adC1b88Eb84cb6116e87D108c06B9",
+      "count": 1,
+      "best": 21,
+      "tier": 0
+    },
+    {
+      "miner": "0x04E9eA4ec8752Da970559d07ddAB7663f563aa0a",
+      "count": 1,
+      "best": 20,
+      "tier": 0
+    },
+    {
+      "miner": "0x390E83D599FAb36C08Fac63f5BBC1769f856C98a",
+      "count": 1,
+      "best": 20,
+      "tier": 0
+    }
+  ],
+  "recent": [
+    {
+      "id": 8,
+      "miner": "0x0aAc0502A07adC1b88Eb84cb6116e87D108c06B9",
+      "tier": 0,
+      "bits": 21,
+      "era": 1,
+      "free": true,
+      "tx": null,
+      "block": null
+    },
+    {
+      "id": 7,
+      "miner": "0x04E9eA4ec8752Da970559d07ddAB7663f563aa0a",
+      "tier": 0,
+      "bits": 20,
+      "era": 1,
+      "free": true,
+      "tx": null,
+      "block": null
+    },
+    {
+      "id": 6,
+      "miner": "0x2f93E76A79C84aa3f210B17F6feE2C73ab94032b",
+      "tier": 3,
+      "bits": 26,
+      "era": 1,
+      "free": true,
+      "tx": null,
+      "block": null
+    },
+    {
+      "id": 5,
+      "miner": "0x9FDef1Ac5a89B9B63af9afA9D22D3E6a471a5aCf",
+      "tier": 1,
+      "bits": 22,
+      "era": 1,
+      "free": false,
+      "tx": null,
+      "block": null
+    },
+    {
+      "id": 4,
+      "miner": "0x9FDef1Ac5a89B9B63af9afA9D22D3E6a471a5aCf",
+      "tier": 1,
+      "bits": 23,
+      "era": 1,
+      "free": false,
+      "tx": null,
+      "block": null
+    },
+    {
+      "id": 3,
+      "miner": "0x9FDef1Ac5a89B9B63af9afA9D22D3E6a471a5aCf",
+      "tier": 1,
+      "bits": 23,
+      "era": 1,
+      "free": false,
+      "tx": null,
+      "block": null
+    },
+    {
+      "id": 2,
+      "miner": "0x390E83D599FAb36C08Fac63f5BBC1769f856C98a",
+      "tier": 0,
+      "bits": 20,
+      "era": 1,
+      "free": true,
+      "tx": null,
+      "block": null
+    },
+    {
+      "id": 1,
+      "miner": "0x9FDef1Ac5a89B9B63af9afA9D22D3E6a471a5aCf",
+      "tier": 0,
+      "bits": 21,
+      "era": 1,
+      "free": true,
+      "tx": null,
+      "block": null
+    }
+  ]
+}
