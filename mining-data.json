@@ -1,16 +1,16 @@
 {
-  "updatedAt": "2026-11-01T03:59:31.384Z",
-  "stoneSupply": 13,
-  "passSupply": 506,
-  "totalMines": 13,
-  "maxId": 13,
+  "updatedAt": "2026-11-01T04:25:44.467Z",
+  "stoneSupply": 17,
+  "passSupply": 520,
+  "totalMines": 17,
+  "maxId": 17,
   "bestBits": 27,
-  "freeCount": 10,
+  "freeCount": 14,
   "paidCount": 3,
   "tierCounts": [
     4,
-    7,
-    0,
+    9,
+    2,
     2,
     0
   ],
@@ -34,9 +34,33 @@
       "tier": 3
     },
     {
+      "miner": "0xf11ca64F9B5e83C919A445d3cCd4aeD8B82B2161",
+      "count": 1,
+      "best": 24,
+      "tier": 2
+    },
+    {
+      "miner": "0x835F146Ea8db449CC214bdaB6601070f201D9562",
+      "count": 1,
+      "best": 24,
+      "tier": 2
+    },
+    {
+      "miner": "0xe8711f796BF2A5C12221ae5fD7179473D0FfE407",
+      "count": 1,
+      "best": 23,
+      "tier": 1
+    },
+    {
       "miner": "0x5C27da87CA16c2F34fF9a1C1F786d43d5E24DA95",
       "count": 1,
       "best": 23,
+      "tier": 1
+    },
+    {
+      "miner": "0x63a79504C4c47367764002AF17773b6667260722",
+      "count": 1,
+      "best": 22,
       "tier": 1
     },
     {
@@ -77,6 +101,46 @@
     }
   ],
   "recent": [
+    {
+      "id": 17,
+      "miner": "0xf11ca64F9B5e83C919A445d3cCd4aeD8B82B2161",
+      "tier": 2,
+      "bits": 24,
+      "era": 1,
+      "free": true,
+      "tx": null,
+      "block": null
+    },
+    {
+      "id": 16,
+      "miner": "0x835F146Ea8db449CC214bdaB6601070f201D9562",
+      "tier": 2,
+      "bits": 24,
+      "era": 1,
+      "free": true,
+      "tx": null,
+      "block": null
+    },
+    {
+      "id": 15,
+      "miner": "0x63a79504C4c47367764002AF17773b6667260722",
+      "tier": 1,
+      "bits": 22,
+      "era": 1,
+      "free": true,
+      "tx": null,
+      "block": null
+    },
+    {
+      "id": 14,
+      "miner": "0xe8711f796BF2A5C12221ae5fD7179473D0FfE407",
+      "tier": 1,
+      "bits": 23,
+      "era": 1,
+      "free": true,
+      "tx": null,
+      "block": null
+    },
     {
       "id": 13,
       "miner": "0x5C27da87CA16c2F34fF9a1C1F786d43d5E24DA95",
