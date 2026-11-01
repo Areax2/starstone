@@ -1,16 +1,16 @@
 {
-  "updatedAt": "2026-11-01T18:32:00.453Z",
-  "stoneSupply": 44,
+  "updatedAt": "2026-11-01T19:04:09.336Z",
+  "stoneSupply": 45,
   "passSupply": 639,
-  "totalMines": 44,
-  "maxId": 44,
+  "totalMines": 45,
+  "maxId": 45,
   "bestBits": 32,
-  "freeCount": 40,
+  "freeCount": 41,
   "paidCount": 4,
   "tierCounts": [
     10,
     13,
-    11,
+    12,
     2,
     8
   ],
@@ -74,6 +74,12 @@
       "count": 1,
       "best": 26,
       "tier": 3
+    },
+    {
+      "miner": "0x9FDfF05752cB0ea1312103d5D8F609c6E5F1cD14",
+      "count": 1,
+      "best": 25,
+      "tier": 2
     },
     {
       "miner": "0xF71ADA45862DEeF16bEADE91ED2CE75100ABf8F3",
@@ -257,6 +263,16 @@
     }
   ],
   "recent": [
+    {
+      "id": 45,
+      "miner": "0x9FDfF05752cB0ea1312103d5D8F609c6E5F1cD14",
+      "tier": 2,
+      "bits": 25,
+      "era": 1,
+      "free": true,
+      "tx": null,
+      "block": null
+    },
     {
       "id": 44,
       "miner": "0xaF68D8f4554e0ae38CE8CBE54144E0Ade319e161",
@@ -492,16 +508,6 @@
       "miner": "0x849bFf5928BCA129bd3d69e0c9b60b53a47Dea38",
       "tier": 0,
       "bits": 20,
-      "era": 1,
-      "free": true,
-      "tx": null,
-      "block": null
-    },
-    {
-      "id": 20,
-      "miner": "0x78d4a5197d643C01F52E1A0b65255f72c90B6703",
-      "tier": 2,
-      "bits": 24,
       "era": 1,
       "free": true,
       "tx": null,
