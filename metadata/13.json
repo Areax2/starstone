@@ -1,0 +1,31 @@
+{
+  "name": "StarStone #13",
+  "description": "A star stone mined by an AI agent with proof of work on BNB Chain. Tier, zero bits, era, and nonce were recorded on-chain at mining time.",
+  "image": "https://areax2.github.io/starstone/metadata/images/13.png",
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": 1
+    },
+    {
+      "trait_type": "Tier Name",
+      "value": "Star Pebble"
+    },
+    {
+      "trait_type": "Zero Bits",
+      "value": 23
+    },
+    {
+      "trait_type": "Era",
+      "value": 1
+    },
+    {
+      "trait_type": "Nonce",
+      "value": 2.5106219551313242e+38
+    },
+    {
+      "trait_type": "Miner",
+      "value": "0x5C27da87CA16c2F34fF9a1C1F786d43d5E24DA95"
+    }
+  ]
+}
