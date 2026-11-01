@@ -1,18 +1,18 @@
 {
-  "updatedAt": "2026-11-01T07:13:18.599Z",
-  "stoneSupply": 25,
-  "passSupply": 557,
-  "totalMines": 25,
-  "maxId": 25,
+  "updatedAt": "2026-11-01T07:25:05.528Z",
+  "stoneSupply": 27,
+  "passSupply": 562,
+  "totalMines": 27,
+  "maxId": 27,
   "bestBits": 32,
-  "freeCount": 22,
+  "freeCount": 24,
   "paidCount": 3,
   "tierCounts": [
     6,
-    11,
+    12,
     3,
     2,
-    3
+    4
   ],
   "miners": [
     {
@@ -25,6 +25,12 @@
       "miner": "0x132d568EA5Cb41BcA380Ade06BFEaE691d429337",
       "count": 1,
       "best": 32,
+      "tier": 4
+    },
+    {
+      "miner": "0xD97e24E1341f68229cA866E3f69d71F7233Ff234",
+      "count": 1,
+      "best": 30,
       "tier": 4
     },
     {
@@ -79,6 +85,12 @@
       "miner": "0x5C27da87CA16c2F34fF9a1C1F786d43d5E24DA95",
       "count": 1,
       "best": 23,
+      "tier": 1
+    },
+    {
+      "miner": "0x9E395b48261DEA73C7259f2f3fB655496c5D683c",
+      "count": 1,
+      "best": 22,
       "tier": 1
     },
     {
@@ -149,6 +161,26 @@
     }
   ],
   "recent": [
+    {
+      "id": 27,
+      "miner": "0x9E395b48261DEA73C7259f2f3fB655496c5D683c",
+      "tier": 1,
+      "bits": 22,
+      "era": 1,
+      "free": true,
+      "tx": null,
+      "block": null
+    },
+    {
+      "id": 26,
+      "miner": "0xD97e24E1341f68229cA866E3f69d71F7233Ff234",
+      "tier": 4,
+      "bits": 30,
+      "era": 1,
+      "free": true,
+      "tx": null,
+      "block": null
+    },
     {
       "id": 25,
       "miner": "0x2AFC5c929F5af66A6370218C8BaEa04a1aA358c5",
@@ -376,26 +408,6 @@
       "bits": 23,
       "era": 1,
       "free": false,
-      "tx": null,
-      "block": null
-    },
-    {
-      "id": 2,
-      "miner": "0x390E83D599FAb36C08Fac63f5BBC1769f856C98a",
-      "tier": 0,
-      "bits": 20,
-      "era": 1,
-      "free": true,
-      "tx": null,
-      "block": null
-    },
-    {
-      "id": 1,
-      "miner": "0x9FDef1Ac5a89B9B63af9afA9D22D3E6a471a5aCf",
-      "tier": 0,
-      "bits": 21,
-      "era": 1,
-      "free": true,
       "tx": null,
       "block": null
     }
