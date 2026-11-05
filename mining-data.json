@@ -1,17 +1,17 @@
 {
-  "updatedAt": "2026-11-05T23:02:05.803Z",
-  "stoneSupply": 86,
-  "passSupply": 763,
-  "totalMines": 86,
-  "maxId": 86,
+  "updatedAt": "2026-11-05T23:30:42.102Z",
+  "stoneSupply": 88,
+  "passSupply": 765,
+  "totalMines": 88,
+  "maxId": 88,
   "bestBits": 38,
-  "freeCount": 79,
+  "freeCount": 81,
   "paidCount": 7,
   "tierCounts": [
     28,
     22,
-    21,
-    4,
+    22,
+    5,
     11
   ],
   "miners": [
@@ -94,6 +94,12 @@
       "tier": 3
     },
     {
+      "miner": "0x3024A92Bbcd0CF87AA8f6D2f0bD78ea0Ab0b3Fd8",
+      "count": 1,
+      "best": 26,
+      "tier": 3
+    },
+    {
       "miner": "0x41d8Bc303F7d6368E207aB6618D74d5b48e57e67",
       "count": 1,
       "best": 26,
@@ -157,6 +163,12 @@
       "miner": "0xB4dFD9676dE5C6003F7BB0098f64E47ba4D09e8B",
       "count": 1,
       "best": 25,
+      "tier": 2
+    },
+    {
+      "miner": "0x18D0DafB61cA2C409B2CFbAc403Cc3CD2069450c",
+      "count": 1,
+      "best": 24,
       "tier": 2
     },
     {
@@ -492,6 +504,26 @@
   ],
   "recent": [
     {
+      "id": 88,
+      "miner": "0x3024A92Bbcd0CF87AA8f6D2f0bD78ea0Ab0b3Fd8",
+      "tier": 3,
+      "bits": 26,
+      "era": 1,
+      "free": true,
+      "tx": null,
+      "block": null
+    },
+    {
+      "id": 87,
+      "miner": "0x18D0DafB61cA2C409B2CFbAc403Cc3CD2069450c",
+      "tier": 2,
+      "bits": 24,
+      "era": 1,
+      "free": true,
+      "tx": null,
+      "block": null
+    },
+    {
       "id": 86,
       "miner": "0x51fb1481355aC40B6e340835403E6c56850e1bFa",
       "tier": 0,
@@ -716,26 +748,6 @@
       "miner": "0x468c08a69E9780D708a612C04b7866d1BD537963",
       "tier": 1,
       "bits": 23,
-      "era": 1,
-      "free": true,
-      "tx": null,
-      "block": null
-    },
-    {
-      "id": 63,
-      "miner": "0xCe59Ae5C2c3704b8Ff512E27Bd85c710De6fc582",
-      "tier": 2,
-      "bits": 25,
-      "era": 1,
-      "free": true,
-      "tx": null,
-      "block": null
-    },
-    {
-      "id": 62,
-      "miner": "0x9966496210a70e9F44Fb95d5f4c25171A6eF0082",
-      "tier": 0,
-      "bits": 21,
       "era": 1,
       "free": true,
       "tx": null,
